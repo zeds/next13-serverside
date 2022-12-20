@@ -1,6 +1,7 @@
 import styles from './page.module.css'
 
 interface Todo {
+	map: any;
 	userId: number;
 	id: number;
 	title: string;
@@ -35,9 +36,9 @@ async function getTodo(): Promise<Todo> {
 export default async function Home() {
 	const todos = await getTodo();
 
-	console.log("todo=", todos);
+	console.log("todos =", todos);
 
-	todos.map((item) => {
+	todos.map((item: any) => {
 		item.image_url = 'https://lusty.asia:1443' + item.profile.avatar[0].formats.thumbnail.url;
 		console.log("item =", item);
 	})
@@ -46,7 +47,7 @@ export default async function Home() {
 	return (
 		<div className={styles.container}>
 			<main className={styles.main}>
-				{todos.map((item) => {
+				{todos.map((item: any) => {
 					return (
 						<div>
 							<p>{item.id}</p>
