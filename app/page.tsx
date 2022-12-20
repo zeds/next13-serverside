@@ -14,11 +14,11 @@ async function getTodo(): Promise<Todo> {
 
 	// Default method of cache:
 	// Like old getStaticProps
-	const responseForceCache = await fetch(url, { cache: 'force-cache'});
+	//const responseForceCache = await fetch(url, { cache: 'force-cache'});
 
 	// Dont cache
 	// Equivalent to old getServerSideProps
-	const responseNoStore = await fetch(url, { cache: 'no-store'});
+	//const responseNoStore = await fetch(url, { cache: 'no-store'});
 
 	// Every 5 seconds cache will die
 	// of course, you can set any second for this
@@ -36,11 +36,11 @@ async function getTodo(): Promise<Todo> {
 export default async function Home() {
 	const todos = await getTodo();
 
-	console.log("todos =", todos);
-
 	todos.map((item: any) => {
-		item.image_url = 'https://lusty.asia:1443' + item.profile.avatar[0].formats.thumbnail.url;
-		console.log("item =", item);
+		item.profile.avatar.map((url: any) => {
+			console.log("url = ", url.formats.thumbnail.url);
+			url.formats.thumbnail.image_url = 'https://lusty.asia:1443' + url.formats.thumbnail.url;
+		})
 	})
 
 
@@ -51,7 +51,12 @@ export default async function Home() {
 					return (
 						<div>
 							<p>{item.id}</p>
-							<img src={item.image_url} alt=""></img>
+							{item.profile.avatar.map((url: any) => {
+								{console.log('uuuu=', url.formats.thumbnail.image_url)}
+								return (
+									<img src={url.formats.thumbnail.image_url} alt=""></img>
+								)
+							})}
 						</div>
 					)
 				})}
