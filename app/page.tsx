@@ -30,6 +30,7 @@ async function getTodo(): Promise<Todo> {
 		},
 		next: { revalidate: 5 } }
 	);
+	
 	return responseRevalidate.json();
 }
 
