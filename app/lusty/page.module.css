@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.container {
+	background: lightgray;
+}
+.title a {
+	display: flex;
+	margin-top: 20px;
+	font-weight: 700;
+	color: #333;
+}
+.box {
+	display: flex;
+	background: skyblue;
+}
+.box > img + img {
+	margin-left: 20px;
+}

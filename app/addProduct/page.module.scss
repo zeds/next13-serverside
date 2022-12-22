@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.container {
+	background: skyblue;
+	border-radius: 15px;
+	max-width: 500px;
+	margin: 10% auto;
+	color: black;
+	
+}
